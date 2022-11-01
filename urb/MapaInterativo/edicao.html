@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"
+    />
+    <title>Edição de Mapas</title>
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="css/qgis2web.css" />
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css" />
+    <link rel="stylesheet" href="css/leaflet-measure.css" />
+    <link
+      rel="stylesheet"
+      href="..\public\js\Leaflet.draw-0.4.14\dist\leaflet.draw.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../public/styles/partials/header.css" />
+    <link
+      rel="stylesheet"
+      href="../public/styles/partials/page-instrucoes.css"
+    />
+    <link rel="stylesheet" href="../public/styles/footer.css" />
+    <link rel="stylesheet" href="../public/styles/main.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+      .logo_pref_horizontal {
+        width: 10vh;
+        max-width: 500px;
+      }
+      .leaflet-popup-content {
+        margin: 13px 24px 13px 20px;
+        line-height: 1.3;
+        font-size: 13px;
+        min-height: 1px;
+        font-family: "montserrat";
+        color: black;
+      }
+
+      .leaflet-control-geocoder-address-context {
+        color: black;
+      }
+
+      .leaflet-control-geocoder-form input {
+        font-size: 15px;
+        border: 0;
+        background-color: transparent;
+        width: 246px;
+        font-family: "montserrat";
+        /* color: white; */
+      }
+
+      .leaflet-control-geocoder .leaflet-control-geocoder-alternatives a {
+        font-size: 15px;
+        font-family: "montserrat";
+      }
+
+      li {
+        text-align: justify;
+      }
+
+      #objstyle {
+        /* ALINHAMENTO DO TEXTO DO HEADER */
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+      }
+
+      .columnimg {
+        float: left;
+        width: 70.33%;
+        padding: 0px;
+      }
+
+      #map {
+        height: 90%;
+        width: 90%;
+      }
+
+      .intrucoes-item > ul i {
+        color: var(--color-text-base);
+        padding-top: 1rem;
+        padding-bottom: 0rem;
+        padding-right: 0rem;
+        font-size: 3.5rem;
+        line-height: 1.5rem;
+        align-content: flex-start;
+        color: #003466;
+      }
+
+      #sim,
+      #nao {
+        text-decoration: none;
+        cursor: pointer;
+        color: #003466;
+        font-size: 15px;
+      }
+
+      #sim:hover,
+      #nao:hover {
+        text-decoration: underline;
+        color: #0d6efd;
+      }
+
+      .page-header {
+        height: 35vh;
+        margin-bottom: -100px;
+        /* height: 125px; */
+      }
+      .leaflet-control-layers-overlays {
+        text-align-last: left;
+      }
+      /* .row::after {
+                            content: "";
+                            clear: both;
+                            display: table;
+                        } */
+    </style>
+    <style>
+      #map {
+        width: 90%;
+        height: 85%;
+        padding: 0;
+        margin: 0;
+      }
+      .leaflet-popup-content {
+        width: fit-content;
+      }
+    </style>
+    <title></title>
+  </head>
+  <body id="page-instrucoes">
+    <header class="page-header">
+      <!-- header menu local load -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script
+        src="https://kit.fontawesome.com/493360b702.js"
+        crossorigin="anonymous"
+      ></script>
+      <div class="top-bar-container-2" style="height: 40px">
+        <nav
+          class="navbar navbar-expand-lg navbar-dark"
+          style="background-color: #fc8803"
+        >
+          <div
+            class="container-fluid"
+            style="
+              text-align: center;
+              display: inline-block;
+              position: relative;
+              text-align: -webkit-center;
+            "
+          >
+            <button class="navbar-toggler" type="button" id="nav-button">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- <div> -->
+            <div
+              class="navbar-collapse justify-content-center"
+              id="navbarNavDropdown"
+            >
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link buttonlink-drop"
+                    href="../index.html"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    style="white-space: nowrap"
+                  >
+                    <b class="first-link">Inicio</b></a
+                  >
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link buttonlink-drop"
+                    href="#"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    style="white-space: nowrap"
+                  >
+                    <b class="first-link">Login</b></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <!-- <script
+        src="http://redeplanejamento.pmf.sc.gov.br/public/scripts/mobile-nav-bar-active.js"
+        defer
+      ></script> -->
+      <div class="top-bar-container" style="top: 0vh">
+        <nav class="navbar">
+          <div class="logo-title">
+            <a>
+              <img
+                class="logo_pref_horizontal"
+                src="../public/images/logonoletter.png"
+                alt=""
+              />
+            </a>
+          </div>
+          <!-- <div class="logo-title">
+                  <a>
+                      <img class="logo_selo_horizontal" src="http://redemobilidade.pmf.sc.gov.br/Remob/public/images/LOGO_REMOB_2020.svg" alt="">
+                  </a>
+              </div>
+              <div class="logo-title">
+                  <a>
+                      <img class="logo_selo_horizontal" src="http://redemobilidade.pmf.sc.gov.br/Remob/public/images/REP_2018_LOGO_LOGO%20ORIGINAL.svg" alt="">
+                  </a>
+              </div> -->
+          <!-- <div class="logo-title">
+                  <a>
+                      <img class="logo_smart_horizontal" src="http://redeplanejamento.pmf.sc.gov.br/public/images/Logo_SmartLAB.png" alt="">
+                  </a>
+              </div> -->
+          <!--         <a href="#" class="toggle-button">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+              </a> -->
+          <!-- ul class="navbar-links">
+                  <li>
+                      <a href="" target="_blank"></a>
+                  </li>
+                  <li>
+                      <a href="" target="_blank"></a>
+                  </li>
+                  </ul> -->
+        </nav>
+      </div>
+      <div class="header-content" style="top: 30%">
+        <strong>SISTEMA</strong>
+      </div>
+    </header>
+
+    <div
+      style="
+        width: 90%;
+        height: 100vh;
+        text-align: -webkit-center;
+        border: 2px dashed white;
+        border-radius: 20px;
+        margin: 50px auto;
+      "
+    >
+      <div style="margin-bottom: 15px; margin-top: 15px">
+        <h1 style="font-weight: bolder; color: white">Editor de Mapas</h1>
+      </div>
+      <div id="map" style="z-index: 1"></div>
+    </div>
+    <script src="js/qgis2web_expressions.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/L.Control.Locate.min.js"></script>
+    <script src="js/leaflet.rotatedMarker.js"></script>
+    <script src="js/leaflet.pattern.js"></script>
+    <script src="js/leaflet-hash.js"></script>
+    <script src="js/Autolinker.min.js"></script>
+    <script src="js/rbush.min.js"></script>
+    <script src="js/labelgun.min.js"></script>
+    <script src="js/labels.js"></script>
+    <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+    <script src="js/leaflet-measure.js"></script>
+    <script src="data/zoneamento_482_0.js"></script>
+    <script src="data/viario_pd_482_1.js"></script>
+    <script src="data/Propostas_Vias_incentivadas_2.js"></script>
+    <script src="data/Distritos_3.js"></script>
+    <script src="..\public\js\Leaflet.draw-0.4.14\dist\leaflet.draw.js"></script>
+    <script src="js\Leaflet.fullscreen-gh-pages\dist\Leaflet.fullscreen.js"></script>
+    <link
+      rel="stylesheet"
+      href="js\Leaflet.fullscreen-gh-pages\dist\leaflet.fullscreen.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="leaflet-control-window-master/src/L.Control.Window.js"></script>
+    <link
+      rel="stylesheet"
+      href="leaflet-control-window-master/src/L.Control.Window.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css"
+    />
+    <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
+    <script>
+      var osmUrl = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        osmAttrib =
+          '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        osm = L.tileLayer(osmUrl, { maxZoom: 18, attribution: osmAttrib }),
+        map = new L.Map("map", {
+          center: new L.LatLng(29.9792, 31.1344),
+          zoom: 15,
+        }),
+        DatabaseLayers = L.featureGroup().addTo(map);
+      var layerControl = L.control
+        .layers(
+          {
+            osm: osm.addTo(map),
+            google: L.tileLayer(
+              "http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}",
+              {
+                attribution: "google",
+              }
+            ),
+          },
+          { DataBaseLayer: DatabaseLayers },
+          { position: "topright", collapsed: false }
+        )
+        .addTo(map);
+      $.getJSON("addcamada.php", function (data) {
+        /* array = data[0] */
+
+        if (data != "") {
+          data.forEach(myFunction);
+        }
+      });
+      function myFunction(value, index, array) {
+        const obj = JSON.parse(value);
+        var geojson = L.geoJson(obj, {
+          onEachFeature: function (feature, layer) {
+            layer.bindPopup(
+              "<h1>" +
+                feature.properties.titulo +
+                "</h1><p>Descrição: " +
+                feature.properties.descricao +
+                "</p><br><img class='card-img-top' src='imageslayer/" +
+                feature.properties.imagem +
+                "' alt='Card image' style='width:100%'>" +
+                feature.geometry.coordinates +
+                "</p><br><img class='card-img-top' src='imageslayer/"
+                ,
+              {
+                minWidth: 600,
+              }
+            );
+            layer.on("pm:update", (e) => {
+              $.ajax({
+                type: "GET",
+                url: "editcamada.php",
+                data: { feature: e.layer.toGeoJSON() },
+                success: function (response) {
+                  alert('Camada Editada');
+                },
+              });
+            });
+          },
+        }).addTo(DatabaseLayers);
+
+        /* geojson.on("click", function (evt) {
+          var content = "<p>Descrição: " +
+                evt.layer.feature.properties.descricao +
+                "</p><br><img class='card-img-top' src='imageslayer/" +
+                evt.layer.feature.properties.imagem +
+                "' alt='Card image' style='width:100%'>"
+          var win = L.control
+            .window(map, { title: evt.layer.feature.properties.titulo, modal: false })
+            .content(content)
+            .prompt({
+              callback: function () {
+                alert("This is called after OK click!");
+              },
+            })
+            .show();
+        }); */
+      }
+      map.pm.addControls({
+        position: "topleft",
+      });
+      function makePopupContent(geojson) {
+        return (
+          "   <form action='salvageometria.php' method='post' enctype='multipart/form-data'> <input type='text' id='titulo' name='titulo'><br><br><input type='text' id='descricao' name='descricao'><br><br><label for='imagepopup' class='col-form-label'>Imagem:</label><input accept='image/*' type='file' id='imagepopup' name='imagepopup'/><br><input type='text' id='fname' name='fname' value='" +
+          geojson +
+          "' hidden><br><input type='submit'></form>"
+        );
+      }
+
+      function setPupup(layer) {
+        var feature = JSON.stringify(layer.toGeoJSON());
+        var coords = makePopupContent(feature);
+        layer.bindPopup(coords);
+      }
+      map.on("pm:create", function (e) {
+        var layer = e.layer;
+        setPupup(layer);
+        layer.on("pm:update", function (e) {
+          setPupup(e.layer);
+        });
+      });
+      /* map.on(DataBaseLayer, ({ layer }) => {
+        layer.on("pm:edit", (e) => {
+          console.log(e);
+        });
+      }); */
+      /*  var _round = function (num, len) {
+        return Math.round(num * Math.pow(10, len)) / Math.pow(10, len);
+      };
+      var strLatLng = function (latlng) {
+        return "(" + _round(latlng.lat, 6) + ", " + _round(latlng.lng, 6) + ")";
+      };
+
+      var getPopupContent = function (layer, geojson) {
+        if (layer instanceof L.Marker || layer instanceof L.CircleMarker) {
+          return (
+            "   <form action='salvageometria.php' method='post'> <input type='text' id='descricao' name='descricao'><br><input type='text' id='fname' name='fname' value='" +
+            geojson +
+            "'><br><input type='submit'></form>"
+          );
+          // Circle - lat/long, radius
+        } else if (layer instanceof L.Circle) {
+          var center = layer.getLatLng(),
+            radius = layer.getRadius();
+          return (
+            "Center: " +
+            strLatLng(center) +
+            "<br />" +
+            "Radius: " +
+            _round(radius, 2) +
+            " m"
+          );
+        } else if (layer instanceof L.Polygon) {
+          var latlngs = layer._defaultShape
+              ? layer._defaultShape()
+              : layer.getLatLngs(),
+            area = L.GeometryUtil.geodesicArea(latlngs);
+          test = layer.toGeoJSON();
+          return (
+            "   <form action='salvageometria.php' method='post' enctype='multipart/form-data'> <input type='text' id='titulo' name='titulo'><br><br><input type='text' id='descricao' name='descricao'><br><br><label for='imagepopup' class='col-form-label'>Imagem:</label><input accept='image/*' type='file' id='imagepopup' name='imagepopup'/><br><input type='text' id='fname' name='fname' value='" +
+            geojson +
+            "' hidden><br><input type='submit'></form>"
+          // Polyline - distance
+        } else if (layer instanceof L.Polyline) {
+          var latlngs = layer._defaultShape
+              ? layer._defaultShape()
+              : layer.getLatLngs(),
+            distance = 0;
+          if (latlngs.length < 2) {
+            return "Distance: N/A";
+          } else {
+            for (var i = 0; i < latlngs.length - 1; i++) {
+              distance += latlngs[i].distanceTo(latlngs[i + 1]);
+            }
+            return "Distance: " + _round(distance, 2) + " m";
+          }
+        }
+        return null;
+      };
+      map.on(L.Draw.Event.CREATED, function (event) {
+        var layer = event.layer;
+        var content = getPopupContent(layer, JSON.stringify(layer.toGeoJSON()));
+        if (content !== null) {
+          layer.bindPopup(content, {
+            minWidth: 467,
+          });
+        }
+        drawnItems.addLayer(layer);
+      });
+      map.on(L.Draw.Event.EDITED, function (event) {
+        var layers = event.layers,
+          content = null;
+        layers.eachLayer(function (layer) {
+          content = getPopupContent(layer);
+          if (content !== null) {
+            layer.setPopupContent(content);
+          }
+        });
+      }); */
+    </script>
+  </body>
+</html>
+<script>
+  $(function () {
+    var includes = $("[data-include]");
+    $.each(includes, function () {
+      var file = "../views/" + $(this).data("include") + ".php";
+      $(this).load(file);
+    });
+  });
+
+  // validar form 01 - pedido de incentivo e termo declaratorio
+  $(".custom-file-input").on("change", function () {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  });
+</script>

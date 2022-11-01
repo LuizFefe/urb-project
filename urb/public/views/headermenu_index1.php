@@ -1,0 +1,77 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/493360b702.js" crossorigin="anonymous"></script>
+<div class="top-bar-container-2" style="height: 40px;">
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003466;">
+
+        <div class="container-fluid" style="text-align:center;display:inline-block;position:relative;text-align: -webkit-center;">
+            <button class="navbar-toggler" type="button" id="nav-button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- <div> -->
+            <div class="navbar-collapse justify-content-center" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <!-- <div style="width: 65%;margin-right: -40px;justify-content: space-between;display:flex"> -->
+                    <a class="nav-link" href="http://redemobilidade.pmf.sc.gov.br/Remob" id="navbarDropdownMenuLink" role="button" style="white-space:nowrap;">
+                        <b class="first-link"></i>Início</b>
+                    </a>
+                    <li class=" nav-item dropdown">
+                        <a class="nav-link dropdown-toggle buttonlink-drop" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <b class="first-link">REP</b></a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #003466;">
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Patrim%C3%B4nio%20Hist%C3%B3rico/" style="font-size:15px;color:white">Patrimônio Histórico</a></li>
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/%C3%81reas%20de%20Lazer/" style="font-size:15px;color:white">Área de Lazer</a></li>
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Mobili%C3%A1rio%20no%20Espa%C3%A7o%20P%C3%BAblico/" style="font-size:15px;color:white">Mobiliário no Espaço Público</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle buttonlink-drop" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <b class="first-link">REMOB</b></a>
+                        <ul class=" dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #003466;">
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Pedestres/" style="font-size:15px;color:white">Pedestres</a></li>
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Pedal/" style="font-size:15px;color:white">Pedal</a></li>
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Transporte%20Coletivo/" style="font-size:15px;color:white">Transporte Coletivo</a></li>
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Escolar/" style="font-size:15px;color:white">Escolar</a></li>
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Taxi/" style="font-size:15px;color:white">Táxi</a></li>
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Turismo/" style="font-size:15px;color:white">Turismo</a></li>
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Estacionamento%20Rotativo/" style="font-size:15px;color:white">Estacionamento Rotativo</a></li>
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Vagas%20Especiais/" style="font-size:15px;color:white">Vagas e Autorizações Especiais</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle buttonlink-drop" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <b class="first-link">REC</b></a>
+                        <!--  <ul class=" dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #003466;">
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Escolar/" style="font-size:15px;color:white">Escolar</a></li>
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Taxi/" style="font-size:15px;color:white">Táxi</a></li>
+                            <li><a class="dropdown-item buttonlink" href="http://redeplanejamento.pmf.sc.gov.br/Turismo/" style="font-size:15px;color:white">Turismo</a></li>
+                        </ul> -->
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle buttonlink-drop" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <b class="first-link">Projetos Especiais</b></a>
+                        <ul class=" dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #003466;">
+                            <li><a class="dropdown-item buttonlink" href="#" style="font-size:15px;color:white">Ponte Viva</a></li>
+                        </ul>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link buttonlink-drop" href="#" id="navbarDropdownMenuLink" role="button" style="white-space:nowrap;">
+                            <b class="first-link">Mapas da Rede</b></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link buttonlink-drop" href="http://redeplanejamento.pmf.sc.gov.br/Guias%20e%20Manuais.php" id="navbarDropdownMenuLink" role="button" style="white-space:nowrap;">
+                            <b class="first-link">Guias e Manuais</b></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link buttonlink-drop" href="http://redeplanejamento.pmf.sc.gov.br/D%C3%BAvidas%20e%20Sugest%C3%B5es.php" id="navbarDropdownMenuLink" role="button" style="white-space:nowrap;">
+                            <b class="first-link">Duvidas e Sugestões</b></a>
+                    </li>
+                </ul>
+            </div>
+
+    </nav>
+</div>
+</div>
+<script src="http://redeplanejamento.pmf.sc.gov.br/public/scripts/mobile-nav-bar-active.js" defer></script>

@@ -1,0 +1,822 @@
+.btn-close {
+  position: fixed;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background: black;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 150ms;
+    left: 96vw;
+    top: 7px;
+}
+.btn-close .icon-cross {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+.btn-close .icon-cross:before,
+.btn-close .icon-cross:after {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #fff;
+  border-radius: 6px;
+}
+.btn-close .icon-cross:before {
+  transform: rotate(45deg);
+}
+.btn-close .icon-cross:after {
+  transform: rotate(-45deg);
+}
+.btn-close .icon-cross span {
+  display: block;
+}
+.btn-close:hover,
+.btn-close:focus {
+  transform: rotateZ(90deg);
+  background: #000000;
+}
+.cross-stand-alone {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+.cross-stand-alone:before,
+.cross-stand-alone:after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #000;
+  border-radius: 4px;
+}
+.cross-stand-alone:before {
+  transform: rotate(45deg);
+}
+.cross-stand-alone:after {
+  transform: rotate(-45deg);
+}
+.cross-stand-alone span {
+  display: block;
+}
+.cross-1px {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.cross-1px:before,
+.cross-1px:after {
+  content: "";
+  position: absolute;
+  top: 39.5px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #000;
+  border-radius: 1px;
+}
+.cross-1px:before {
+  transform: rotate(45deg);
+}
+.cross-1px:after {
+  transform: rotate(-45deg);
+}
+.cross-1px span {
+  display: block;
+}
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+html.modal-active,
+body.modal-active {
+  overflow: hidden;
+}
+#modal-container,
+#modal-container2,
+#modal-container3 {
+  position: fixed;
+  display: table;
+  height: 100%;
+  width: 100%;
+  top: 70px;
+  left: 0;
+  transform: scale(0);
+  z-index: 1;
+}
+#modal-container.one,
+#modal-container2.one,
+#modal-container3.one {
+  transform: scaleY(0.01) scaleX(0);
+  animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.one .modal-background .modal,
+#modal-container2.one .modal-background .modal,
+#modal-container3.one .modal-background .modal {
+  transform: scale(0);
+  animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.one.out,
+#modal-container2.one.out,
+#modal-container3.one.out {
+  transform: scale(1);
+  animation: unfoldOut 1s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.one.out .modal-background .modal,
+#modal-container2.one.out .modal-background .modal,
+#modal-container3.one.out .modal-background .modal {
+  animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.two {
+  transform: scale(1);
+}
+#modal-container.two .modal-background {
+  background: rgba(0, 0, 0, 0);
+  animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.two .modal-background .modal {
+  opacity: 0;
+  animation: scaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.two + .content {
+  animation: scaleBack 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.two.out {
+  animation: quickScaleDown 0s 0.5s linear forwards;
+}
+#modal-container.two.out .modal-background {
+  animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.two.out .modal-background .modal {
+  animation: scaleDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.two.out + .content {
+  animation: scaleForward 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.three {
+  z-index: 0;
+  transform: scale(1);
+}
+#modal-container.three .modal-background {
+  background: rgba(0, 0, 0, 0.6);
+}
+#modal-container.three .modal-background .modal {
+  animation: moveUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.three + .content {
+  z-index: 1;
+  animation: slideUpLarge 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.three.out .modal-background .modal {
+  animation: moveDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.three.out + .content {
+  animation: slideDownLarge 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.four {
+  z-index: 0;
+  transform: scale(1);
+}
+#modal-container.four .modal-background {
+  background: rgba(0, 0, 0, 0.7);
+}
+#modal-container.four .modal-background .modal {
+  animation: blowUpModal 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.four + .content {
+  z-index: 1;
+  animation: blowUpContent 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.four.out .modal-background .modal {
+  animation: blowUpModalTwo 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.four.out + .content {
+  animation: blowUpContentTwo 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.five {
+  transform: scale(1);
+}
+#modal-container.five .modal-background {
+  background: rgba(0, 0, 0, 0);
+  animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.five .modal-background .modal {
+  transform: translateX(-1500px);
+  animation: roadRunnerIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.five.out {
+  animation: quickScaleDown 0s 0.5s linear forwards;
+}
+#modal-container.five.out .modal-background {
+  animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.five.out .modal-background .modal {
+  animation: roadRunnerOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.six {
+  transform: scale(1);
+}
+#modal-container.six .modal-background {
+  background: rgba(0, 0, 0, 0);
+  animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.six .modal-background .modal {
+  background-color: transparent;
+  animation: modalFadeIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.six .modal-background .modal h2,
+#modal-container.six .modal-background .modal p {
+  opacity: 0;
+  position: relative;
+  animation: modalContentFadeIn 0.5s 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+    forwards;
+}
+#modal-container.six .modal-background .modal .modal-svg rect {
+  animation: sketchIn 0.5s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.six.out {
+  animation: quickScaleDown 0s 0.5s linear forwards;
+}
+#modal-container.six.out .modal-background {
+  animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.six.out .modal-background .modal {
+  animation: modalFadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.six.out .modal-background .modal h2,
+#modal-container.six.out .modal-background .modal p {
+  animation: modalContentFadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)
+    forwards;
+}
+#modal-container.six.out .modal-background .modal .modal-svg rect {
+  animation: sketchOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.seven {
+  transform: scale(1);
+}
+#modal-container.seven .modal-background {
+  background: rgba(0, 0, 0, 0);
+  animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.seven .modal-background .modal {
+  height: 75px;
+  width: 75px;
+  border-radius: 75px;
+  overflow: hidden;
+  animation: bondJamesBond 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.seven .modal-background .modal h2,
+#modal-container.seven .modal-background .modal p {
+  opacity: 0;
+  position: relative;
+  animation: modalContentFadeIn 0.5s 1.4s linear forwards;
+}
+#modal-container.seven.out {
+  animation: slowFade 0.5s 1.5s linear forwards;
+}
+#modal-container.seven.out .modal-background {
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeToRed 2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.seven.out .modal-background .modal {
+  border-radius: 3px;
+  height: 162px;
+  width: 227px;
+  animation: killShot 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.seven.out .modal-background .modal h2,
+#modal-container.seven.out .modal-background .modal p {
+  animation: modalContentFadeOut 0.5s 0.5 cubic-bezier(0.165, 0.84, 0.44, 1)
+    forwards;
+}
+#modal-container .modal-background,
+#modal-container2 .modal-background,
+#modal-container3 .modal-background {
+  display: table-cell;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  vertical-align: middle;
+}
+#modal-container .modal-background .modal,
+#modal-container2 .modal-background .modal,
+#modal-container3 .modal-background .modal {
+  justify-content: center;
+  background: white;
+  /* padding: 50px; */
+  display: flex;
+  border-radius: 3px;
+  font-weight: 300;
+  position: relative;
+}
+#modal-container .modal-background .modal h2,
+#modal-container2 .modal-background .modal h2,
+#modal-container3 .modal-background .modal h2 {
+  font-size: 25px;
+  line-height: 25px;
+  margin-bottom: 15px;
+}
+#modal-container .modal-background .modal p,
+#modal-container2 .modal-background .modal p,
+#modal-container3 .modal-background .modal p {
+  font-size: 18px;
+  line-height: 19px;
+}
+#modal-container .modal-background .modal .modal-svg,
+#modal-container2 .modal-background .modal .modal-svg,
+#modal-container3 .modal-background .modal .modal-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+}
+#modal-container .modal-background .modal .modal-svg rect,
+#modal-container2 .modal-background .modal .modal-svg rect,
+#modal-container3 .modal-background .modal .modal-svg rect {
+  stroke: #fff;
+  stroke-width: 2px;
+  stroke-dasharray: 778;
+  stroke-dashoffset: 778;
+}
+.content {
+  min-height: 100%;
+  height: 100%;
+  background: white;
+  position: relative;
+  z-index: 0;
+}
+.content h1 {
+  padding: 75px 0 30px 0;
+  text-align: center;
+  font-size: 30px;
+  line-height: 30px;
+}
+.content .buttons {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+.content .buttons .button {
+  display: inline-block;
+  text-align: center;
+  padding: 10px 15px;
+  margin: 10px;
+  background: red;
+  font-size: 18px;
+  background-color: #efefef;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.content .buttons .button:hover {
+  color: white;
+  background: #009bd5;
+}
+@keyframes unfoldIn {
+  0% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+}
+@keyframes unfoldOut {
+  0% {
+    transform: scaleY(1) scaleX(1);
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+}
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes zoomOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0);
+  }
+}
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.8) translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes scaleDown {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8) translateY(1000px);
+    opacity: 0;
+  }
+}
+@keyframes scaleBack {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.85);
+  }
+}
+@keyframes scaleForward {
+  0% {
+    transform: scale(0.85);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes quickScaleDown {
+  0% {
+    transform: scale(1);
+  }
+  99.9% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes slideUpLarge {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+@keyframes slideDownLarge {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes moveUp {
+  0% {
+    transform: translateY(150px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes moveDown {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(150px);
+  }
+}
+@keyframes blowUpContent {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  99.9% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes blowUpContentTwo {
+  0% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes blowUpModal {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes blowUpModalTwo {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+@keyframes roadRunnerIn {
+  0% {
+    transform: translateX(-1500px) skewX(30deg) scaleX(1.3);
+  }
+  70% {
+    transform: translateX(30px) skewX(0deg) scaleX(0.9);
+  }
+  100% {
+    transform: translateX(0px) skewX(0deg) scaleX(1);
+  }
+}
+@keyframes roadRunnerOut {
+  0% {
+    transform: translateX(0px) skewX(0deg) scaleX(1);
+  }
+  30% {
+    transform: translateX(-30px) skewX(-5deg) scaleX(0.9);
+  }
+  100% {
+    transform: translateX(1500px) skewX(30deg) scaleX(1.3);
+  }
+}
+@keyframes sketchIn {
+  0% {
+    stroke-dashoffset: 778;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes sketchOut {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 778;
+  }
+}
+@keyframes modalFadeIn {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: white;
+  }
+}
+@keyframes modalFadeOut {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@keyframes modalContentFadeIn {
+  0% {
+    opacity: 0;
+    top: -20px;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+@keyframes modalContentFadeOut {
+  0% {
+    opacity: 1;
+    top: 0px;
+  }
+  100% {
+    opacity: 0;
+    top: -20px;
+  }
+}
+@keyframes bondJamesBond {
+  0% {
+    transform: translateX(1000px);
+  }
+  80% {
+    transform: translateX(0px);
+    border-radius: 75px;
+    height: 75px;
+    width: 75px;
+  }
+  90% {
+    border-radius: 3px;
+    height: 182px;
+    width: 247px;
+  }
+  100% {
+    border-radius: 3px;
+    height: 162px;
+    width: 227px;
+  }
+}
+@keyframes killShot {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(300px) rotate(45deg);
+    opacity: 0;
+  }
+}
+@keyframes fadeToRed {
+  0% {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    background-color: rgba(255, 0, 0, 0.8);
+  }
+}
+@keyframes slowFade {
+  0% {
+    opacity: 1;
+  }
+  99.9% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@media screen and (max-width: 568px) {
+  .btn-close .icon-cross:before,
+.btn-close .icon-cross:after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: black;
+  border-radius: 6px;
+}
+  #modal-container,
+  #modal-container2,
+  #modal-container3 {
+    position: fixed;
+    display: block;
+    height: 100%;
+    width: 100%;
+    top: 48px;
+    left: 0;
+    transform: scale(0);
+    z-index: 1;
+  }
+  #modal-container .modal-background,
+  #modal-container2 .modal-background,
+  #modal-container3 .modal-background {
+    display: block;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    vertical-align: middle;
+    height: 100%;
+  }
+  .divnotemodal {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 222px;
+    width: 320px;
+    height: 500px;
+    position: absolute;
+    text-align: center;
+}
+.portfolio_data2 {
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  justify-self: center;
+}
+.swipersize{
+  position: relative;
+  top: 8.1vh;
+  height: 500px;
+}
+.swiperbelieve{
+  height: fit-content;
+}
+.littleadjust{
+  height: 58px;
+}
+.divinsidenote {
+  margin: 0 auto;
+  text-align: center;
+  width: 231px;
+  height: 146px;
+  margin-top: 7px;
+  margin-bottom: 50px;
+}
+.portfolio_description{
+  height: 110px;
+}
+.fitcontent{
+  height: fit-content;
+}
+.btn-close {
+  position: fixed;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 150ms;
+    left: 89vw;
+    top: 3vh;
+}
+.nav_item{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.nav_link:hover {
+  color: #1d99d1;
+}
+.btn-close .icon-cross {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: 20px;
+  height: 30px;
+}
+}
+@media screen and (min-width: 1024px) {
+  .swipersize{
+    position: relative;
+    top: 7vh;
+  }
+
+}
